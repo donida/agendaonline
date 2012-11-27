@@ -43,24 +43,22 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Project name</a>
+          <a class="brand" href="#fast_about"><spring:message code="project.name" text="Online Calendar" /></a>
           <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact"><spring:message code="project.name" text="Contact" /></a></li>
+              <li class="active"><a href="#home"><spring:message code="project.home" text="Home" /></a></li>
+              <li><a href="#about"><spring:message code="project.about" text="About" /></a></li>
+              <li><a href="#contact"><spring:message code="project.contact" text="Contact Us" /></a></li>
               <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><spring:message code="project.options" text="Options" /><b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="?lang=en">Locale ingles</a></li>
-                  <li><a href="?lang=pt_BR">locale pt_BR</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li class="nav-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
+                  <li><a href="#"><spring:message code="project.signin" text="Sign In" /></a></li>
+                  <li><a href="#"><spring:message code="project.signup" text="Sign Up" /></a></li>
+                  <li class="nav-header"><spring:message code="project.keepuptodate" text="Keep Up-To-Date" /></li>
+                  <li><a href="#"><spring:message code="project.statistics" text="Statistics" /></a></li>
+                  <li><a href="#"><spring:message code="project.news" text="News" /></a></li>
                 </ul>
               </li>
             </ul>
@@ -74,6 +72,7 @@
     ================================================== -->
     <div id="portalCarousel" class="carousel slide">
       <div class="carousel-inner">
+      <!-- 
         <div class="item active">
           <img src="./resources/img/assets/slide-01.jpg" alt="">
           <div class="container">
@@ -104,6 +103,7 @@
             </div>
           </div>
         </div>
+         -->
       </div>
       <a class="left carousel-control" href="#portalCarousel" data-slide="prev">&lsaquo;</a>
       <a class="right carousel-control" href="#portalCarousel" data-slide="next">&rsaquo;</a>
@@ -181,10 +181,27 @@
     <script src="./resources/js/jquery-1.8.2.js"></script>
 <!--     <script src="./resources/js/bootstrap.min.js"></script> -->
     <script src="./resources/js/bootstrap.js"></script>
+    
+    <script id="carouselItemTemplate" type="text/x-jquery-tmpl">
+		
+	</script>
+	
+    <script id="carouselItemFormTemplate" type="text/x-jquery-tmpl">
+    	{{tmpl "summaryTemplate"}}
+    	<tr><td>Director: ${Director}</td></tr>
+	</script>
+
     <script>
       !function ($) {
         $(function(){
-          $('#portalCarousel').carousel()
+          var portalCarousel = $('#portalCarousel');
+          var portalItens = {
+        		  
+          };
+          $('#carouselItemTemplate').tmpl(portalItens);
+          var carouselInner = $('.carousel-inner', portalCarousel);
+          
+          portalCarousel.carousel();
         })
       }(window.jQuery)
     </script>
